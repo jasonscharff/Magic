@@ -1,0 +1,32 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - AlgoliaSearch-Client-Swift (3.0):
+    - AlgoliaSearch-Client-Swift/Online (= 3.0)
+  - AlgoliaSearch-Client-Swift/Online (3.0)
+  - Haneke (1.0.2)
+
+DEPENDENCIES:
+  - AFNetworking
+  - AlgoliaSearch-Client-Swift
+  - Haneke
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AlgoliaSearch-Client-Swift: 7cb93017631bce8bb09e00ceac29430a3a5afd4f
+  Haneke: 01454a67322faa0dd9d81fc0f447885044e71521
+
+COCOAPODS: 0.39.0
