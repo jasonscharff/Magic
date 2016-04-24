@@ -12,7 +12,7 @@
 #import "MGCBottomBorderTextField.h"
 #import "Magic-Swift.h"
 
-@interface MGCSearchViewController () <UITextFieldDelegate>
+@interface MGCSearchViewController () <UITextFieldDelegate, UITableViewDelegate>
 
 @property (nonatomic, strong) UIImageView *searchImage;
 @property (nonatomic, strong) MGCBottomBorderTextField *searchField;
@@ -36,9 +36,11 @@
 
 - (void)configureTableView {
   self.tableView = [[UITableView alloc]init];
-  self.tableView.rowHeight = 120;
+  self.tableView.rowHeight = UITableViewAutomaticDimension;
+  self.tableView.estimatedRowHeight = 100;
   self.dataHandler = [[MGCTableViewDataSource alloc]initWithTableView:self.tableView];
   self.tableView.dataSource = self.dataHandler;
+  self.tableView.delegate = self;
   [AutolayoutHelper configureView:self.view subViews:NSDictionaryOfVariableBindings(_tableView, _searchField) constraints:@[@"H:|[_tableView]|",
                                                                                                               @"V:[_searchField]-[_tableView]|"]];
    
@@ -59,6 +61,7 @@
                                                            constant:0];
   
   self.searchField.placeholder = @"Search for";
+  self.searchField.autocorrectionType = UITextAutocorrectionTypeNo;
   self.searchField.delegate = self;
   [self.searchField addTarget:self
                 action:@selector(textFieldDidChange:)
@@ -77,7 +80,6 @@
   if(textField.text && ![textField.text isEqualToString:@""]) {
     [_dataHandler executeSearch:textField.text];
   }
-  
 }
 
 - (void)didReceiveMemoryWarning {

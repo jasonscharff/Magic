@@ -12,6 +12,8 @@
 		BE16775A1CC8159D00F614DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1677591CC8159D00F614DE /* AppDelegate.m */; };
 		BE16775D1CC8159D00F614DE /* MGCSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE16775C1CC8159D00F614DE /* MGCSearchViewController.m */; };
 		BE1677621CC8159D00F614DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE1677611CC8159D00F614DE /* Assets.xcassets */; };
+		BE8981791CCD7F500011F736 /* MGCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8981781CCD7F500011F736 /* MGCConstants.swift */; };
+		BE89817C1CCD8DA80011F736 /* MGCItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE89817B1CCD8DA80011F736 /* MGCItemDetailViewController.m */; };
 		BE9A636E1CCD4DA400B955A9 /* MGCYelpObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A636D1CCD4DA400B955A9 /* MGCYelpObject.swift */; };
 		BEA3751C1CC864C9005CB47F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA3751B1CC864C9005CB47F /* LaunchScreen.storyboard */; };
 		BEB608D61CCC09E1009BCDE5 /* MGCBottomBorderTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB608D51CCC09E1009BCDE5 /* MGCBottomBorderTextField.m */; };
@@ -19,7 +21,6 @@
 		BEB608DF1CCC0D97009BCDE5 /* LinearLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB608DB1CCC0D97009BCDE5 /* LinearLayout.m */; };
 		BEB608E01CCC0D97009BCDE5 /* AutolayoutHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB608DD1CCC0D97009BCDE5 /* AutolayoutHelper.m */; };
 		BEB608E41CCC41C0009BCDE5 /* MGCTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB608E31CCC41C0009BCDE5 /* MGCTableViewDataSource.swift */; };
-		BEB608E61CCC467C009BCDE5 /* MGCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB608E51CCC467C009BCDE5 /* MGCConstants.swift */; };
 		BEB608E81CCC4E76009BCDE5 /* MGCItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB608E71CCC4E76009BCDE5 /* MGCItem.swift */; };
 		BEB608ED1CCD4903009BCDE5 /* MGCSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB608EC1CCD4903009BCDE5 /* MGCSearchTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,9 @@
 		BE16775C1CC8159D00F614DE /* MGCSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGCSearchViewController.m; sourceTree = "<group>"; };
 		BE1677611CC8159D00F614DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE1677661CC8159D00F614DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE8981781CCD7F500011F736 /* MGCConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCConstants.swift; sourceTree = "<group>"; };
+		BE89817A1CCD8DA80011F736 /* MGCItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCItemDetailViewController.h; sourceTree = "<group>"; };
+		BE89817B1CCD8DA80011F736 /* MGCItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCItemDetailViewController.m; sourceTree = "<group>"; };
 		BE9A636D1CCD4DA400B955A9 /* MGCYelpObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCYelpObject.swift; sourceTree = "<group>"; };
 		BEA3751B1CC864C9005CB47F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BEB608D41CCC09E1009BCDE5 /* MGCBottomBorderTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCBottomBorderTextField.h; sourceTree = "<group>"; };
@@ -47,7 +51,6 @@
 		BEB608DD1CCC0D97009BCDE5 /* AutolayoutHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutolayoutHelper.m; sourceTree = "<group>"; };
 		BEB608DE1CCC0D97009BCDE5 /* AutolayoutHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutolayoutHelper.h; sourceTree = "<group>"; };
 		BEB608E31CCC41C0009BCDE5 /* MGCTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCTableViewDataSource.swift; sourceTree = "<group>"; };
-		BEB608E51CCC467C009BCDE5 /* MGCConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCConstants.swift; sourceTree = "<group>"; };
 		BEB608E71CCC4E76009BCDE5 /* MGCItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCItem.swift; sourceTree = "<group>"; };
 		BEB608EB1CCD4903009BCDE5 /* MGCSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCSearchTableViewCell.h; sourceTree = "<group>"; };
 		BEB608EC1CCD4903009BCDE5 /* MGCSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCSearchTableViewCell.m; sourceTree = "<group>"; };
@@ -95,9 +98,9 @@
 		BE1677541CC8159D00F614DE /* Magic */ = {
 			isa = PBXGroup;
 			children = (
+				BE8981781CCD7F500011F736 /* MGCConstants.swift */,
 				BE1677581CC8159D00F614DE /* AppDelegate.h */,
 				BE1677591CC8159D00F614DE /* AppDelegate.m */,
-				BEB608E51CCC467C009BCDE5 /* MGCConstants.swift */,
 				BEB608D81CCC0B61009BCDE5 /* Magic-Bridging-Header.h */,
 				BE8981761CCD5DF50011F736 /* Objects */,
 				BE8981771CCD5E050011F736 /* Data */,
@@ -141,6 +144,8 @@
 		BEB608D31CCC0950009BCDE5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				BE89817A1CCD8DA80011F736 /* MGCItemDetailViewController.h */,
+				BE89817B1CCD8DA80011F736 /* MGCItemDetailViewController.m */,
 				BE16775B1CC8159D00F614DE /* MGCSearchViewController.h */,
 				BE16775C1CC8159D00F614DE /* MGCSearchViewController.m */,
 			);
@@ -312,9 +317,10 @@
 				BEB608E01CCC0D97009BCDE5 /* AutolayoutHelper.m in Sources */,
 				BEB608E41CCC41C0009BCDE5 /* MGCTableViewDataSource.swift in Sources */,
 				BE9A636E1CCD4DA400B955A9 /* MGCYelpObject.swift in Sources */,
+				BE89817C1CCD8DA80011F736 /* MGCItemDetailViewController.m in Sources */,
 				BE16775D1CC8159D00F614DE /* MGCSearchViewController.m in Sources */,
-				BEB608E61CCC467C009BCDE5 /* MGCConstants.swift in Sources */,
 				BEB608ED1CCD4903009BCDE5 /* MGCSearchTableViewCell.m in Sources */,
+				BE8981791CCD7F500011F736 /* MGCConstants.swift in Sources */,
 				BE16775A1CC8159D00F614DE /* AppDelegate.m in Sources */,
 				BE1677571CC8159D00F614DE /* main.m in Sources */,
 			);

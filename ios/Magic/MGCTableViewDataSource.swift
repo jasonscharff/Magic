@@ -12,6 +12,7 @@ import AlgoliaSearch
 import SwiftyJSON
 
 let reuseIdentifier = "com.magic.searchtableviewcell"
+let numRowsToLazyLoad = 4;
 
 @objc class MGCTableViewDataSource : NSObject, UITableViewDataSource {
   
@@ -20,6 +21,10 @@ let reuseIdentifier = "com.magic.searchtableviewcell"
   let index : Index
   var searchResults : [MGCItem] = [];
   var tableView : UITableView;
+  
+  var pageNumber = 0
+  var query : String?
+  var hasLoadedAll = false
   
   init(tableView:UITableView) {
     self.tableView = tableView
@@ -34,8 +39,21 @@ let reuseIdentifier = "com.magic.searchtableviewcell"
     
     let tableViewCell = MGCSearchTableViewCell(style: .Default, reuseIdentifier: reuseIdentifier)
     tableViewCell.item = searchResults[indexPath.row]
+    
+    if(indexPath.row >= searchResults.count - numRowsToLazyLoad) {
+      pageNumber += 1
+      if query != nil {
+        executeSearch(query!, pageNumber: pageNumber)
+      }
+      
+    }
+    
     return tableViewCell
     
+  }
+  
+  func reloadTableView() {
+    self.tableView.reloadData()
   }
   
   @objc func tableView(tableView: UITableView,
@@ -43,22 +61,39 @@ let reuseIdentifier = "com.magic.searchtableviewcell"
       return searchResults.count
   }
   
-  @objc func executeSearch (string : String) {
-    let query = Query(query:string)
-    
+  func executeSearch(query : String, pageNumber : Int) {
+    let query = Query(query:query)
+    query.page = pageNumber
+    var results : Array<MGCItem>
+    if(query.page == 0) {
+      results = []
+    }
+    else {
+      results = self.searchResults
+    }
     index.search(query) { (content, error) in
-      var results : Array<MGCItem> = []
       let resultsJSON = JSON(content!)
       let hits : JSON = resultsJSON["hits"]
-      for item in hits {
-        print(item)
-          if let object = MGCItem(json: item.1) {
-            results.append(object)
-          }
-        }
-        self.searchResults = results
-        self.tableView.reloadData()
-      
+      if hits.count == 0 {
+        self.hasLoadedAll = true
       }
+      else {
+        self.hasLoadedAll = false
+      }
+      for item in hits {
+        if let object = MGCItem(json: item.1) {
+          results.append(object)
+        }
+      }
+      self.searchResults = results
+      self.reloadTableView()
+      
     }
   }
+
+  @objc func executeSearch (query : String) {
+    pageNumber = 0
+    self.query = query
+    executeSearch(query, pageNumber: 0);
+  }
+}

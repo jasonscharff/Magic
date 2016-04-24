@@ -17,7 +17,6 @@
 
 @property (nonatomic, strong) UILabel *storeLabel;
 @property (nonatomic, strong) UILabel *itemLabel;
-@property (nonatomic, strong) UILabel *descriptionLabel;
 @property (nonatomic, strong) UILabel *addressLabel;
 @property (nonatomic, strong) UIImageView *coverImage;
 
@@ -27,11 +26,14 @@
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-  self.storeLabel = [UILabel new];
   self.itemLabel = [UILabel new];
-  self.descriptionLabel = [UILabel new];
-  self.coverImage = [UIImageView new];
+  self.itemLabel.font = [UIFont fontWithName:@"AvenirNext-Demibold" size:14.0f];
+  self.storeLabel = [UILabel new];
+  self.storeLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:14.0f];
   self.addressLabel = [UILabel new];
+  self.addressLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:12.0];
+  self.coverImage = [UIImageView new];
+  self.coverImage.contentMode = UIViewContentModeScaleAspectFit;
   [self setConstraints];
   return self;
 }
@@ -43,9 +45,10 @@
                          constraints:@[@"H:|-[_coverImage]-[_itemLabel]",
                                        @"X:_storeLabel.leading == _itemLabel.leading",
                                        @"X:_addressLabel.leading == _itemLabel.leading",
+                                       @"X:_addressLabel.trailing <= superview.trailing - 8",
                                        @"V:|-[_coverImage]-|",
                                        @"X:_coverImage.height == _coverImage.width",
-                                       @"V:|-[_itemLabel]-[_storeLabel]-[_addressLabel]-|"]];
+                                       @"V:|-[_itemLabel]-2-[_storeLabel]-2-[_addressLabel]-(>=8)-|"]];
 }
 
 -(void)setItem:(MGCItem *)item {
@@ -53,7 +56,6 @@
   [self.contentView layoutIfNeeded];
   self.storeLabel.text = item.locationName;
   self.itemLabel.text = item.itemName;
-  self.descriptionLabel.text = item.itemDescription;
   [self.coverImage hnk_setImageFromURL:item.coverImageURL];
   self.addressLabel.text = item.addressString;
   
