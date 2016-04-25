@@ -10,6 +10,7 @@
 
 #import "AutolayoutHelper.h"
 #import "MGCBottomBorderTextField.h"
+#import "MGCItemDetailViewController.h"
 #import "Magic-Swift.h"
 
 @interface MGCSearchViewController () <UITextFieldDelegate, UITableViewDelegate>
@@ -19,6 +20,8 @@
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) MGCTableViewDataSource *dataHandler;
+
+@property (nonatomic, strong) MGCItemDetailViewController *detailVC;
 
 
 
@@ -80,6 +83,14 @@
   if(textField.text && ![textField.text isEqualToString:@""]) {
     [_dataHandler executeSearch:textField.text];
   }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  if(!_detailVC) {
+    _detailVC = [[MGCItemDetailViewController alloc]init];
+  }
+  _detailVC.item = [self.dataHandler getItemForIndexPath:indexPath];
+  [self.navigationController pushViewController:_detailVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

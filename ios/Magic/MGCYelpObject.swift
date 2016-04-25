@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class MGCYelpObject : NSObject {
+@objc class MGCYelpObject : NSObject {
   
   var starRating : Int
   var imageURL : NSURL

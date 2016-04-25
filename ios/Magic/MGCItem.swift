@@ -22,6 +22,7 @@ import SwiftyJSON
   var locationName : String
   var coverImageURL : NSURL
   var addressString : String
+  var yelpObject : MGCYelpObject
   
   init?(json:JSON) {
     if(json == nil) {
@@ -36,6 +37,7 @@ import SwiftyJSON
     self.coverImageURL = NSURL(string:json["cover_image"].string!)!
     self.itemBuyImageURL = NSURL(string:json["buy_image"].string!)!
     self.addressString = json["printable_address"].string!
+    self.yelpObject = MGCYelpObject(json: json["yelp"])
   }
   
 }

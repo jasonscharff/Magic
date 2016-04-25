@@ -96,4 +96,8 @@ let numRowsToLazyLoad = 4;
     self.query = query
     executeSearch(query, pageNumber: 0);
   }
+  
+  @objc func getItemForIndexPath(path:NSIndexPath) -> MGCItem {
+    return self.searchResults[path.row];
+  }
 }
