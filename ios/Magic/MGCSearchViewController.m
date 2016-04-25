@@ -13,15 +13,14 @@
 #import "MGCItemDetailViewController.h"
 #import "Magic-Swift.h"
 
-@interface MGCSearchViewController () <UITextFieldDelegate, UITableViewDelegate>
+@interface MGCSearchViewController () <UITextFieldDelegate, UITableViewDelegate, UIViewControllerPreviewingDelegate>
 
 @property (nonatomic, strong) UIImageView *searchImage;
 @property (nonatomic, strong) MGCBottomBorderTextField *searchField;
 @property (nonatomic, strong) UITableView *tableView;
-
 @property (nonatomic, strong) MGCTableViewDataSource *dataHandler;
-
 @property (nonatomic, strong) MGCItemDetailViewController *detailVC;
+@property (nonatomic, strong) id previewingContext;
 
 
 
@@ -34,6 +33,9 @@
   self.view.backgroundColor = [UIColor whiteColor];
   [self addSearchBar];
   [self configureTableView];
+  if ([self isForceTouchAvailable]) {
+    self.previewingContext = [self registerForPreviewingWithDelegate:self sourceView:self.view];
+  }
   // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -91,6 +93,46 @@
   }
   _detailVC.item = [self.dataHandler getItemForIndexPath:indexPath];
   [self.navigationController pushViewController:_detailVC animated:YES];
+}
+
+#pragma mark 3D touch
+
+- (void)previewingContext:(id )previewingContext commitViewController: (UIViewController *)viewControllerToCommit {
+  [self.navigationController showViewController:viewControllerToCommit sender:nil];
+}
+
+-(UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
+  if(!_detailVC) {
+    _detailVC = [[MGCItemDetailViewController alloc]init];
+  }
+  CGPoint cellPostion = [self.tableView convertPoint:location fromView:self.view];
+  NSIndexPath *path = [self.tableView indexPathForRowAtPoint:cellPostion];
+  _detailVC.item = [self.dataHandler getItemForIndexPath:path];
+  UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:path];
+  previewingContext.sourceRect = [self.view convertRect:tableCell.frame fromView:self.tableView];
+  return _detailVC;
+}
+
+- (BOOL)isForceTouchAvailable {
+  BOOL isForceTouchAvailable = NO;
+  if ([self.traitCollection respondsToSelector:@selector(forceTouchCapability)]) {
+    isForceTouchAvailable = self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable;
+  }
+  return isForceTouchAvailable;
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+  [super traitCollectionDidChange:previousTraitCollection];
+  if ([self isForceTouchAvailable]) {
+    if (!self.previewingContext) {
+      self.previewingContext = [self registerForPreviewingWithDelegate:self sourceView:self.view];
+    }
+  } else {
+    if (self.previewingContext) {
+      [self unregisterForPreviewingWithContext:self.previewingContext];
+      self.previewingContext = nil;
+    }
+  }
 }
 
 - (void)didReceiveMemoryWarning {
