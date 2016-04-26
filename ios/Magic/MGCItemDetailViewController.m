@@ -53,7 +53,6 @@ static CGFloat delta = .025;
   [self.uberButton setImage:[UIImage imageNamed:@"uber"] forState:UIControlStateNormal];
   self.uberButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
   self.locationLabel = [UILabel new];
-  self.addressLabel = [UILabel new];
   [self addConstraints];
   if(_item) {
     [self setItem:_item];
@@ -81,7 +80,8 @@ static CGFloat delta = .025;
                                        @"X:_locationLabel.trailing <= superview.trailing - 8",
                                        @"X:_yelpStars.centerX == superview.centerX",
                                        @"H:|-30-[_addressLabel]-30-|",
-                                       @"V:|[_mapView]-[_locationLabel]-[_addressLabel]-[_itemLabel]-[_descriptionLabel]-[_yelpStars(20)]-[_orderButton(40)]-[_uberButton(==_orderButton)]-(>=8)-|"]];
+                                       @"H:[_orderButton(==_uberButton)]",
+                                       @"V:|[_mapView]-[_locationLabel]-[_addressLabel]-[_itemLabel]-[_descriptionLabel]-[_yelpStars(20)]-[_orderButton]-[_uberButton(==_orderButton)]"]];
   
   NSLayoutConstraint *mapViewRatio = [NSLayoutConstraint constraintWithItem:self.mapView
                                                                   attribute:NSLayoutAttributeHeight
@@ -117,7 +117,6 @@ static CGFloat delta = .025;
   format.diskCapacity = 10000 * 1024 * 1024; // 10GB
   format.preloadPolicy = HNKPreloadPolicyLastSession;
   _yelpStars.hnk_cacheFormat = format;
-  //_orderButton.imageView.hnk_cacheFormat = format;
   [self.orderButton hnk_setImageFromURL:item.itemBuyImageURL forState:UIControlStateNormal];
   [self.yelpStars hnk_setImageFromURL:item.yelpObject.imageURL];
   MKCoordinateRegion mapRegion;

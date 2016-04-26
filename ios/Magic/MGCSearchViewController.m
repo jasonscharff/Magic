@@ -10,13 +10,15 @@
 
 #import "AutolayoutHelper.h"
 #import "MGCBottomBorderTextField.h"
+#import "MGCImageAlignedBottomBorderTextField.h"
 #import "MGCItemDetailViewController.h"
 #import "Magic-Swift.h"
 
 @interface MGCSearchViewController () <UITextFieldDelegate, UITableViewDelegate, UIViewControllerPreviewingDelegate>
 
 @property (nonatomic, strong) UIImageView *searchImage;
-@property (nonatomic, strong) MGCBottomBorderTextField *searchField;
+@property (nonatomic, strong) MGCImageAlignedBottomBorderTextField *itemSearchField;
+@property (nonatomic, strong) MGCImageAlignedBottomBorderTextField *locationSearchField;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) MGCTableViewDataSource *dataHandler;
 @property (nonatomic, strong) MGCItemDetailViewController *detailVC;
@@ -31,7 +33,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.view.backgroundColor = [UIColor whiteColor];
-  [self addSearchBar];
+  [self addSearchBars];
   [self configureTableView];
   if ([self isForceTouchAvailable]) {
     self.previewingContext = [self registerForPreviewingWithDelegate:self sourceView:self.view];
@@ -46,38 +48,33 @@
   self.dataHandler = [[MGCTableViewDataSource alloc]initWithTableView:self.tableView];
   self.tableView.dataSource = self.dataHandler;
   self.tableView.delegate = self;
-  [AutolayoutHelper configureView:self.view subViews:NSDictionaryOfVariableBindings(_tableView, _searchField) constraints:@[@"H:|[_tableView]|",
-                                                                                                              @"V:[_searchField]-[_tableView]|"]];
+  self.tableView.tableFooterView = [UIView new];
+  [AutolayoutHelper configureView:self.view subViews:NSDictionaryOfVariableBindings(_tableView, _itemSearchField) constraints:@[@"H:|[_tableView]|",
+                                                                                                              @"V:[_itemSearchField]-[_tableView]|"]];
    
 }
 
-- (void)addSearchBar {
-  self.searchImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"search_icon"]];
-  self.searchImage.contentMode = UIViewContentModeScaleAspectFit;
-  self.searchField = [[MGCBottomBorderTextField alloc]initWithBorderColor:[UIColor blackColor]
-                                                              borderWidth:1/[UIScreen mainScreen].scale];
+- (void)addSearchBars {
+  self.itemSearchField = [[MGCImageAlignedBottomBorderTextField alloc]initWithImage:[UIImage imageNamed:@"search_icon"]
+                                                                      bottomBorderColor:[UIColor blackColor]
+                                                                      borderWidth:1/[UIScreen mainScreen].scale];
+                          
   
-  NSLayoutConstraint *ratio = [NSLayoutConstraint constraintWithItem:self.searchImage
-                                                           attribute:NSLayoutAttributeWidth
-                                                           relatedBy:NSLayoutRelationEqual
-                                                           toItem:self.searchImage
-                                                           attribute:NSLayoutAttributeHeight
-                                                           multiplier:1.0
-                                                           constant:0];
   
-  self.searchField.placeholder = @"Search for";
-  self.searchField.autocorrectionType = UITextAutocorrectionTypeNo;
-  self.searchField.delegate = self;
-  [self.searchField addTarget:self
+  
+  
+  self.itemSearchField.textField.placeholder = @"Search for";
+  self.itemSearchField.textField.autocorrectionType = UITextAutocorrectionTypeNo;
+  self.itemSearchField.textField.delegate = self;
+  [self.itemSearchField.textField addTarget:self
                 action:@selector(textFieldDidChange:)
       forControlEvents:UIControlEventEditingChanged];
   
   [AutolayoutHelper configureView:self.view
-                         subViews:NSDictionaryOfVariableBindings(_searchField, _searchImage)
-                        constraints:@[@"H:|-[_searchImage]-[_searchField]-|",
-                                      @"V:|-10-[_searchImage(25)]",
-                                      @"X:_searchField.bottom == _searchImage.bottom"]];
-  [self.view addConstraint:ratio];
+                         subViews:NSDictionaryOfVariableBindings(_itemSearchField)
+                        constraints:@[@"V:|-10-[_itemSearchField(25)]",
+                                      @"H:|-[_itemSearchField]-|"]];
+  
   
 }
 

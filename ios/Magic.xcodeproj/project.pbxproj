@@ -12,6 +12,7 @@
 		BE16775A1CC8159D00F614DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1677591CC8159D00F614DE /* AppDelegate.m */; };
 		BE16775D1CC8159D00F614DE /* MGCSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE16775C1CC8159D00F614DE /* MGCSearchViewController.m */; };
 		BE1677621CC8159D00F614DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE1677611CC8159D00F614DE /* Assets.xcassets */; };
+		BE2DA0941CCF387600A4E518 /* MGCImageAlignedBottomBorderTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2DA0931CCF387600A4E518 /* MGCImageAlignedBottomBorderTextField.m */; };
 		BE8981791CCD7F500011F736 /* MGCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8981781CCD7F500011F736 /* MGCConstants.swift */; };
 		BE89817C1CCD8DA80011F736 /* MGCItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE89817B1CCD8DA80011F736 /* MGCItemDetailViewController.m */; };
 		BE9A636E1CCD4DA400B955A9 /* MGCYelpObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A636D1CCD4DA400B955A9 /* MGCYelpObject.swift */; };
@@ -37,6 +38,8 @@
 		BE16775C1CC8159D00F614DE /* MGCSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGCSearchViewController.m; sourceTree = "<group>"; };
 		BE1677611CC8159D00F614DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE1677661CC8159D00F614DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE2DA0921CCF387600A4E518 /* MGCImageAlignedBottomBorderTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCImageAlignedBottomBorderTextField.h; sourceTree = "<group>"; };
+		BE2DA0931CCF387600A4E518 /* MGCImageAlignedBottomBorderTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCImageAlignedBottomBorderTextField.m; sourceTree = "<group>"; };
 		BE8981781CCD7F500011F736 /* MGCConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCConstants.swift; sourceTree = "<group>"; };
 		BE89817A1CCD8DA80011F736 /* MGCItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCItemDetailViewController.h; sourceTree = "<group>"; };
 		BE89817B1CCD8DA80011F736 /* MGCItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCItemDetailViewController.m; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 		BEB608D71CCC09E5009BCDE5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BE2DA0921CCF387600A4E518 /* MGCImageAlignedBottomBorderTextField.h */,
+				BE2DA0931CCF387600A4E518 /* MGCImageAlignedBottomBorderTextField.m */,
 				BEB608EB1CCD4903009BCDE5 /* MGCSearchTableViewCell.h */,
 				BEB608EC1CCD4903009BCDE5 /* MGCSearchTableViewCell.m */,
 				BEB608D41CCC09E1009BCDE5 /* MGCBottomBorderTextField.h */,
@@ -321,6 +326,7 @@
 				BE16775D1CC8159D00F614DE /* MGCSearchViewController.m in Sources */,
 				BEB608ED1CCD4903009BCDE5 /* MGCSearchTableViewCell.m in Sources */,
 				BE8981791CCD7F500011F736 /* MGCConstants.swift in Sources */,
+				BE2DA0941CCF387600A4E518 /* MGCImageAlignedBottomBorderTextField.m in Sources */,
 				BE16775A1CC8159D00F614DE /* AppDelegate.m in Sources */,
 				BE1677571CC8159D00F614DE /* main.m in Sources */,
 			);
