@@ -49,8 +49,8 @@
   self.tableView.dataSource = self.dataHandler;
   self.tableView.delegate = self;
   self.tableView.tableFooterView = [UIView new];
-  [AutolayoutHelper configureView:self.view subViews:NSDictionaryOfVariableBindings(_tableView, _itemSearchField) constraints:@[@"H:|[_tableView]|",
-                                                                                                              @"V:[_itemSearchField]-[_tableView]|"]];
+  [AutolayoutHelper configureView:self.view subViews:NSDictionaryOfVariableBindings(_tableView, _locationSearchField) constraints:@[@"H:|[_tableView]|",
+                                                                                                              @"V:[_locationSearchField]-[_tableView]|"]];
    
 }
 
@@ -58,9 +58,10 @@
   self.itemSearchField = [[MGCImageAlignedBottomBorderTextField alloc]initWithImage:[UIImage imageNamed:@"search_icon"]
                                                                       bottomBorderColor:[UIColor blackColor]
                                                                       borderWidth:1/[UIScreen mainScreen].scale];
-                          
   
-  
+  self.locationSearchField = [[MGCImageAlignedBottomBorderTextField alloc]initWithImage:[UIImage imageNamed:@"location_pin"]
+                                                                      bottomBorderColor:[UIColor blackColor]
+                                                                      borderWidth:1/[UIScreen mainScreen].scale];
   
   
   self.itemSearchField.textField.placeholder = @"Search for";
@@ -71,9 +72,10 @@
       forControlEvents:UIControlEventEditingChanged];
   
   [AutolayoutHelper configureView:self.view
-                         subViews:NSDictionaryOfVariableBindings(_itemSearchField)
-                        constraints:@[@"V:|-10-[_itemSearchField(25)]",
-                                      @"H:|-[_itemSearchField]-|"]];
+                         subViews:NSDictionaryOfVariableBindings(_itemSearchField, _locationSearchField)
+                        constraints:@[@"V:|-10-[_itemSearchField(25)]-[_locationSearchField(25)]",
+                                      @"H:|-[_itemSearchField]-|",
+                                      @"H:|-[_locationSearchField]-|"]];
   
   
 }
